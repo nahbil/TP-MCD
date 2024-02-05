@@ -1,5 +1,9 @@
 package monprojet.entity;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,18 +16,20 @@ import lombok.ToString;
 // On utilise Lombok pour auto-générer getter / setter / toString...
 // cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
-@Entity // Une entité JPA
-public class City {
+@Entity
+public class Employe {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer id;
+    private Integer matricule;
 
     @NonNull
-    @Size(min = 2)
-    private String name;
+    private String nom;
 
-    private int population;
+    @Email
+    private String email;
 
-    @NonNull
-    @ManyToOne(optional = false) // obligatoire, la clé étrangère ne doit pas être nulle
-    Country country;
+    private String poste;
+
+    private LocalDate embauche;
+
+    private BigDecimal salaire;
 }
