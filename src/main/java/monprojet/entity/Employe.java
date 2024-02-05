@@ -27,9 +27,4 @@ public class Employe {
     @Email
     private String email;
 
-    private String poste;
-
-    private LocalDate embauche;
-
-    private BigDecimal salaire;
 }
