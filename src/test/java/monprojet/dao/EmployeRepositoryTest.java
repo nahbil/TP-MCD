@@ -24,7 +24,7 @@ class EmployeRepositoryTest {
     void onTrouveUnEmployeParSonNom() {
         log.info("On peut trouver un employé par son nom (requête dans le repository)");
         Employe employe = dao.findByNom("Rémi Bastide");
-        assertNotNull(employe, "On a bien trouvé l'employé Rémi Bastide dans data.sql");
+        assertNotNull(employe, "On doit trouver l'employé Rémi Bastide dans data.sql");
         assertEquals("Remi.Bastide@univ-jfc.fr", employe.getEmail());
     }
 }
