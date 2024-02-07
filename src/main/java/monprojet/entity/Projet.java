@@ -11,24 +11,19 @@ import lombok.*;
 // cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Employe {
+public class Projet {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private Integer matricule;
+    private Integer code;
 
     @NonNull
     private String nom;
 
-    @Email
-    private String email;
+    @NonNull
+    private LocalDate debut;
 
-    @ManyToOne
-    private Employe superieur;
+    private LocalDate fin;
 
-    @OneToMany(mappedBy = "superieur")
-    private List<Employe> subrdonnés;
-
-    @OneToMany (mappedBy = "contributeur")
+    @OneToMany (mappedBy = "affectation")
     private List<Participation> participations;
 
 }

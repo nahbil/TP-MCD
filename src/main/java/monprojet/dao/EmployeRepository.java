@@ -1,6 +1,9 @@
 package monprojet.dao;
 
+import org.hibernate.annotations.processing.SQL;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import monprojet.entity.Employe;
 
 public interface EmployeRepository extends JpaRepository<Employe, Integer> {
@@ -13,4 +16,7 @@ public interface EmployeRepository extends JpaRepository<Employe, Integer> {
      */
     Employe findByNom(String nomDeLemploye);
 
+    @Query("SELECT SUM(p.pourcentage) FROM Participation p "
+    + "WHERE p.contributeur.matricule  = :contributeur_id AND p.affectation.fin IS NULL")
+    Long calculPourcentageByContributeurId(int contributeur_id);
 }
